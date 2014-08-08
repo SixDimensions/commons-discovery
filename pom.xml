@@ -9,9 +9,9 @@
 	<groupId>com.sixdimensions.commons.osgi.wrapper</groupId>
 	<artifactId>commons-discovery</artifactId>
 	<packaging>bundle</packaging>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.5</version>
 
-	<name></name>
+	<name />
 	<description>This bundle wraps commons-discovery-0.5.jar and makes it work in Apache Felix.</description>
 	<url>https://github.com/SixDimensions/commons-discovery</url>
 	<inceptionYear>2014</inceptionYear>
