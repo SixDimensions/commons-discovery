@@ -1,0 +1,129 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<groupId>com.sixdimensions.commons.osgi.wrapper</groupId>
+	<artifactId>commons-discovery</artifactId>
+	<packaging>bundle</packaging>
+	<version>0.1.0-SNAPSHOT</version>
+
+	<name></name>
+	<description>This bundle wraps commons-discovery-0.5.jar and makes it work in Apache Felix.</description>
+	<url>https://github.com/SixDimensions/commons-discovery</url>
+	<inceptionYear>2014</inceptionYear>
+
+	<organization>
+		<name>Six Dimensions</name>
+		<url>http://www.sixdimensions.com</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Dan Klco</name>
+			<email>dan.klco@sixdimensions.com</email>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+	<scm>
+		<url>git@github.com:SixDimensions/commons-discovery.git</url>
+		<developerConnection>scm:git:git@github.com:SixDimensions/commons-discovery.git</developerConnection>
+		<connection>scm:git:git@github.com:SixDimensions/commons-discovery.git</connection>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.7</version>
+				<extensions>true</extensions>
+				<configuration>
+						<Embed-Dependency>
+							commons-discovery
+						</Embed-Dependency>
+						<Export-Package>
+							org.apache.commons.discovery,
+							org.apache.commons.discovery.ant,
+							org.apache.commons.discovery.base,
+							org.apache.commons.discovery.jdk,
+							org.apache.commons.discovery.log,
+							org.apache.commons.discovery.resource,
+							org.apache.commons.discovery.resource.classes,
+							org.apache.commons.discovery.resource.names,
+							org.apache.commons.discovery.tools
+						</Export-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-scr-plugin</artifactId>
+				<version>1.7.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<id>create-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<attach>false</attach>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8.1</version>
+				<executions>
+					<execution>
+						<id>create-javadoc</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.2</version>
+		</dependency>
+	</dependencies>
+
+
+	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+		</profile>
+	</profiles>
+</project>
