@@ -50,6 +50,7 @@
 				<version>2.3.7</version>
 				<extensions>true</extensions>
 				<configuration>
+					<instructions>
 						<Embed-Dependency>
 							commons-discovery
 						</Embed-Dependency>
